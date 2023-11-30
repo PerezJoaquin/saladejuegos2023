@@ -3,6 +3,7 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from
 import { LoginService } from 'src/app/servicios/login.service';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   mail="";
   pass="";
 
-  constructor(private fb: FormBuilder, private _router:Router, private _login:LoginService){
+  constructor(private fb: FormBuilder, private _router:Router, private _login:LoginService, private appc:AppComponent){
     this.forma = this.fb.group({
       'password': ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]],
       'email': ['', [Validators.required, Validators.email]]
@@ -36,11 +37,12 @@ export class LoginComponent {
     if(await this._login.loginService(this.forma.value.email, this.forma.value.password)){
       Swal.fire({
         title: 'Éxito!',
-        text: 'Ingreso exitoso. Bienvenido ' + this.mail,
+        html: 'Ingreso exitoso.<br>Bienvenido <b>' + this.mail+"</b>",
         icon: 'success',
         confirmButtonText: 'OK!'
       })
       console.log(this._login.loggedUser)
+      this.appc.subuser();
       this._router.navigate(['home'])
     }else{
       Swal.fire({
@@ -66,6 +68,10 @@ export class LoginComponent {
         break;
       case 3:
         this.mail="leonidasduri@outlook.com";
+        this.pass="789456123aaBB";
+        break;
+      case 4:
+        this.mail="profe@gmail.com";
         this.pass="789456123aaBB";
         break;
     }

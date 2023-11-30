@@ -17,6 +17,22 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { AhorcadoComponent } from './componentes/ahorcado/ahorcado.component';
+import { BotonesComponent } from './componentes/ahorcado/botones/botones.component';
+import { PrincipalComponent } from './componentes/ahorcado/principal/principal.component';
+import { MayormenorComponent } from './componentes/mayormenor/mayormenor.component';
+import { CartasComponent } from './componentes/mayormenor/cartas/cartas.component';
+import { PrincipalMayorComponent } from './componentes/mayormenor/principal/principal.component';
+import { PreguntadosComponent } from './components/preguntados/preguntados.component';
+import { PreguntadosPrincipalComponent } from './components/preguntados/preguntados-principal/preguntados-principal.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PunteriaComponent } from './componentes/punteria/punteria.component';
+import { PunteriaprincipalComponent } from './componentes/punteria/punteriaprincipal/punteriaprincipal.component';
+import { EncuestaComponent } from './componentes/encuesta/encuesta.component';
+import { EncuestaPrincipalComponent } from './componentes/encuesta/encuesta-principal/encuesta-principal.component';
+import { TelefonoPipe } from './pipes/telefono.pipe';
+import { UserlogComponent } from './components/userlog/userlog.component';
+import { ParsetimePipe } from './pipes/parsetime.pipe';
 
 @NgModule({
   declarations: [
@@ -25,12 +41,28 @@ import { FIREBASE_OPTIONS } from '@angular/fire/compat';
     RegistroComponent,
     HomeComponent,
     QuienSoyComponent,
+    AhorcadoComponent,
+    BotonesComponent,
+    PrincipalComponent,
+    MayormenorComponent,
+    CartasComponent,
+    PrincipalMayorComponent,
+    PreguntadosComponent,
+    PreguntadosPrincipalComponent,
+    PunteriaComponent,
+    PunteriaprincipalComponent,
+    EncuestaComponent,
+    EncuestaPrincipalComponent,
+    TelefonoPipe,
+    UserlogComponent,
+    ParsetimePipe
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
     MatButtonModule,
+    HttpClientModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

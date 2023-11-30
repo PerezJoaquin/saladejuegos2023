@@ -41,14 +41,14 @@
                              La contrseña es requerida
                           </small>
                           <small class="invalid" *ngIf="forma.controls.password.errors?.pattern &&forma.controls.password.touched">
-                             Contraseña no valida
+                             La contraseña debe incluir minúsculas, mayúsculas, y un número
                           </small>
                        </div>
                        <div class="form-group">
                         <label for="exampleInputEmail1">Repetir contraseña</label>
                         <input type="password" name="repassword" id="repassword"  class="form-control"
-                               aria-describedby="repassword" placeholder="Ingrese la contraseña" formControlName="repassword" [(ngModel)]="repass">
-                         <small class="invalid" *ngIf="forma.controls.password.touched">
+                               aria-describedby="repassword" placeholder="Ingrese la contraseña" formControlName="repassword" [(ngModel)]="repass" (ngModelChange)="repasscheck()">
+                         <small class="invalid" *ngIf="!forma.controls.password.touched">
                             Repita su contraseña
                          </small>
                          <small class="invalid" *ngIf="repass != pass &&forma.controls.password.touched">
@@ -59,8 +59,14 @@
                          <br>
                       </div>
                       <div class="col-md-12 text-center ">
-                         <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm"
+                         <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" *ngIf="!spinner"
                                 [disabled]="forma.invalid || repass != pass ">Registrar</button>
+                        <button type="submit" class=" btn btn-block mybtn btn-primary tx-tfm" *ngIf="spinner"
+                                [disabled]="true">
+                                <div class="spinner-border" role="status">
+                                    
+                               </div>
+                              </button>
                       </div>
                       <div class="col-md-12 ">
                          <div class="login-or">

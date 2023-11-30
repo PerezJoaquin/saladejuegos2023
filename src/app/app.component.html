@@ -17,7 +17,9 @@
 
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
 <div class="container-fluid">
-  <a class="navbar-brand" href="#">{{_login.usuarioActivo}}</a>
+  <a class="navbar-brand" href="" >
+      <img src="assets/favicon.ico" alt="" style="height: 25px;">
+    {{_login.usuarioActivo}}</a>
   <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -26,6 +28,20 @@
       <li class="nav-item" style="padding-left: 100px;">
         <a class="nav-link" class="btn btn-secondary btn-small navbar-btn" (click)="quiensoy()">Quien Soy</a>
       </li>
+      <li class="nav-item" style="padding-left: 100px;" *ngIf="!user.encuesta">
+        <a class="nav-link" class="btn btn-secondary btn-small navbar-btn" routerLink="encuesta">Encuesta</a>
+      </li>
+      
+      <li class="nav-item" style="padding-left: 20px;" >
+        <a class="nav-link" class="btn btn-secondary btn-small navbar-btn" routerLink="resultadoEncuesta" *ngIf="user.perfil=='administrador'">Resultados Encuesta</a>
+      </li>
+      <li class="nav-item" style="padding-left: 20px;" >
+        <a class="nav-link" class="btn btn-secondary btn-small navbar-btn" routerLink="logUsuarios" *ngIf="user.perfil=='administrador'">Log de Usuarios</a>
+      </li>
+      <li class="nav-item" style="padding-left: 20px;">
+        <a class="nav-link" class="btn btn-secondary btn-small navbar-btn" routerLink="chat">Chat</a>
+      </li>
+      
       <!--li class="nav-item">
         <a class="nav-link" routerLink="login">Login</a>
       </li>
@@ -47,7 +63,7 @@
       <li>
           <div class="btn-nav"><a class="btn btn-primary btn-small navbar-btn" (click)="reg()" *ngIf="_login.usuarioActivo=='Sala de Juegos'">Registrarse</a>
           </div>
-          <div class="btn-nav"><a class="btn btn-primary btn-small navbar-btn" (click)="logout()" *ngIf="_login.usuarioActivo!='Sala de Juegos'">Salir</a>
+          <div class="btn-nav"><a class="btn btn-danger btn-small navbar-btn" (click)="logout()" *ngIf="_login.usuarioActivo!='Sala de Juegos'">Salir</a>
           </div>
       </li>
   </ul> 

@@ -76,7 +76,7 @@ body {
   }
 
   .bgimg{
-    ----background:#fff url(../assets/mainBG.jpg) 100/100 no-repeat;
+    ----background:#fff url(../assets/mainBG.png) 100/100 no-repeat;
   }
 
 /*#sect1 {  
@@ -87,14 +87,16 @@ body {
 }*/
 
 body {
-  background-image: url("../assets/mainBG.jpg");
+  background-image: url("../assets/mainBG.png");
   background-repeat: no-repeat, repeat;
   background-color: #EDEEF0;
   background-position: center;
   /*height: 100%;
-  width:100%;*/
+  width:100%;*/   
   background-size: cover;
   /*height: 100%;
   width:100%;
   background-attachment: fixed;*/
 }
+
+

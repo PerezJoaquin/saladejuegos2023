@@ -15,6 +15,7 @@ export class RegistroComponent {
   pass="";
   nombre="";
   repass="";
+  spinner=false;
 
   constructor(private fb: FormBuilder, private _router:Router, private _login:LoginService){
     this.forma = this.fb.group({
@@ -34,19 +35,26 @@ export class RegistroComponent {
       : null;
   }
 
+  repasscheck(){
+    
+  }
+
+
   async registrar(){
+    this.spinner=true;
     if(await this._login.registrarUser(this.forma.value)){
       Swal.fire({
         title: 'Éxito!',
-        text: 'Registro exitoso. Volviendo al ingreso',
+        html: 'Registro exitoso.<br>Volviendo al ingreso',
         icon: 'success',
         confirmButtonText: 'OK!'
       })
       this.login()
     }else{
+      this.spinner=false;
       Swal.fire({
         title: 'Error!',
-        text: 'El correo ingresado ya está en uso. Ingrese un nuevo correo',
+        html: 'El correo ingresado ya está en uso.<br>Ingrese un nuevo correo',
         icon: 'error',
         confirmButtonText: 'Reintentar!'
       })
@@ -86,11 +94,12 @@ export class RegistroComponent {
     if(await this._login.loginService(this.forma.value.email, this.forma.value.password)){
       Swal.fire({
         title: 'Éxito!',
-        text: 'Ingreso exitoso. Bienvenido ' + this.nombre,
+        html: 'Ingreso exitoso.<br>Bienvenido <b>' + this.nombre+"</b>",
         icon: 'success',
         confirmButtonText: 'OK!'
       })
       console.log(this._login.loggedUser)
+      this.spinner=false;
       this._router.navigate(['home'])
     }else{
       Swal.fire({
@@ -100,6 +109,7 @@ export class RegistroComponent {
         confirmButtonText: 'Cerrar'
       })
     }
+    this.spinner=false;
   }
 
   reglogin(){
