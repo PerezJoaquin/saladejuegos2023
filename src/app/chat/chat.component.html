@@ -27,14 +27,14 @@
                                 
                                 {{mesa.mensaje}}
                                 <br>
-                                <div style="text-align: right;" (click)="show(mesa)">{{mesa.stamp | date:'MMM d, y, h:mm:ss a'}}</div>
+                                <div style="text-align: right;" (click)="show(mesa)">{{mesa.stamp | date:'d/M/yy, h:mm a'}}</div>
                             </div>
 
                             <div speech-bubble pbottom aleft style="--bbColor:#d5aeff;width: 70%;margin-top: 10px;margin-left: 10px;" class="wrapdiv" *ngIf="mesa.usuario.nombre!=miuser.nombre">
                                 <div class="title">{{mesa.usuario.nombre}}</div>
                                 {{mesa.mensaje}}
                                 <br>
-                                <div style="text-align: right;" (click)="show(mesa)">{{mesa.stamp | date:'MMM d, y, h:mm:ss a'}}</div>
+                                <div style="text-align: right;" (click)="show(mesa)">{{mesa.stamp | date:'d/M/yy, h:mm a'}}</div>
                             </div>
                             
                         </div>

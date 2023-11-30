@@ -1,5 +1,5 @@
 <table style="width:100%">
-    <button type="button"class="btn btn-warning" (click)="restart()" style="float:left;margin-top: 5px;margin-left: 5px;">Reiniciar</button>
+    <button type="button"class="btn btn-warning" (click)="restart(0)" style="float:left;margin-top: 5px;margin-left: 5px;">Reiniciar</button>
     <button type="button"class="btn btn-warning" (click)="showpuntaje()" style="float:left;margin-top: 5px;margin-left: 5px;">Puntajes</button>
     <button type="button"class="btn btn-warning" (click)="instrucciones()" style="float:left;margin-top: 5px;margin-left: 5px;">?</button>
 
@@ -27,7 +27,7 @@
                         <div style="background-color: grey; position: relative; left: 300px; width: 60px;height:60px; border-radius: 50%;"
                         [ngStyle]="{'left':padrighr+'px', 'top':padtop+'px'}"
                         (click)="shoot()">
-                            <div *ngIf="puntaje==0" style="color:white;padding-left: 15px;" (click)="startGame()">
+                            <div *ngIf="puntaje==0" style="color:white;padding-left: 15px;" (click)="restart(0)">
                                 <img src="assets/punteria/target.png" style="width:60px;height: 60px;margin-left: -15px;" alt="">
                             </div>
                             <div *ngIf="puntaje!=0" style="color:white;padding-left: 15px;">

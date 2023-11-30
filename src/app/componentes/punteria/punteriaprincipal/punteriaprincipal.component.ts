@@ -63,9 +63,13 @@ export class PunteriaprincipalComponent {
     //this.fdb.guardarPreguntado(this.puntaje);
   }
 
-  restart(){
+  restart(sele:number){
     clearInterval(this.intervalId);
     this.startGame();
+    if(sele==1){
+      this.puntaje=1;
+    }
+    
   } 
 
   showpuntaje(){
